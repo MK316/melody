@@ -7,15 +7,31 @@ import io
 def note_to_tone(note_spec, base_duration=500):
     # Note frequencies in Hz (simplified)
     notes = {
+        'do-1': 130.81,  # C3
+        're-1': 146.83,  # D3
+        'mi-1': 164.81,  # E3
+        'fa-1': 174.61,  # F3
+        'sol-1': 196.00,  # G3
+        'la-1': 220.00,  # A3
+        'si-1': 246.94,  # B3
+        
         'do': 261.63,  # C4
         're': 293.66,  # D4
         'mi': 329.63,  # E4
         'fa': 349.23,  # F4
         'sol': 392.00,  # G4
         'la': 440.00,  # A4
-        'si': 493.88,   # B4
-        'do1': 523.25  # C5
+        'si': 493.88,  # B4
+    
+        'do1': 523.25,  # C5
+        're1': 587.33,  # D5
+        'mi1': 659.25,  # E5
+        'fa1': 698.46,  # F5
+        'sol1': 783.99,  # G5
+        'la1': 880.00,  # A5
+        'si1': 987.77,  # B5
     }
+
     
     # Split note and duration or comma additions
     parts = note_spec.split(':')
@@ -59,6 +75,13 @@ if st.button('Generate Tone'):
 table_markdown = """
 | Note | Frequency (Hz) | Octave |
 |------|----------------|--------|
+| do-1 | 130.81         | C3     |
+| re-1 | 146.83         | D3     |
+| mi-1 | 164.81         | E3     |
+| fa-1 | 174.61         | F3     |
+| sol-1| 196.00         | G3     |
+| la-1 | 220.00         | A3     |
+| si-1 | 246.94         | B3     |
 | do   | 261.63         | C4     |
 | re   | 293.66         | D4     |
 | mi   | 329.63         | E4     |
@@ -67,6 +90,12 @@ table_markdown = """
 | la   | 440.00         | A4     |
 | si   | 493.88         | B4     |
 | do1  | 523.25         | C5     |
+| re1  | 587.33         | D5     |
+| mi1  | 659.25         | E5     |
+| fa1  | 698.46         | F5     |
+| sol1 | 783.99         | G5     |
+| la1  | 880.00         | A5     |
+| si1  | 987.77         | B5     |
 """
 
 st.markdown(table_markdown)
