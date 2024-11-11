@@ -45,6 +45,18 @@ def generate_melody(notes_input):
 # Streamlit interface
 st.title('Create Your Melody')
 user_input = st.text_input('Enter a sequence of notes (e.g., "do:1000, mi,, mi:750"):')
+notes_markdown = """
+```python
+notes = {
+    'do': 261.63,  # C4
+    're': 293.66,  # D4
+    'mi': 329.63,  # E4
+    'fa': 349.23,  # F4
+    'sol': 392.00,  # G4
+    'la': 440.00,  # A4
+    'si': 493.88   # B4
+}
+
 if st.button('Generate Tone'):
     melody = generate_melody(user_input)
     # Convert the audio to a format that can be played in the browser
