@@ -96,5 +96,3 @@ table_markdown = """
 | si1           | 987.77         | B5     |
 """
 st.markdown(table_markdown)
-
-st.markdown(table_markdown)
