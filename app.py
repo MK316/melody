@@ -61,6 +61,7 @@ def generate_melody(notes_input):
 
 # Streamlit interface
 st.title('Create Your Melody')
+st.caption('Sample to copy and paste: do re mi do do re mi do mi fa sol, mi fa sol, sol:250 la:250 sol:250 fa:250 mi do sol:250 la:250 sol:250 fa:250 mi do do sol-1 do, do sol-1 do,')
 user_input = st.text_input('Enter a sequence of notes (e.g., "do:1000, mi,, mi:750"): if you simply write "do re mi", the default duration is 500 ms. Using a comma doubles the duration.', '')
 
 if st.button('Generate Tone'):
