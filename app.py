@@ -74,7 +74,7 @@ if st.button('Generate Tone'):
 
 # Display notes and instructions
 table_markdown = """
-| note Symbol | Frequency (Hz) | Octave |
+| Symbol to use | Frequency (Hz) | Octave |
 |------|----------------|--------|
 | do-1 | 130.81         | C3     |
 | re-1 | 146.83         | D3     |
