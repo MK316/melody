@@ -3,8 +3,8 @@ from pydub import AudioSegment
 from pydub.generators import Sine
 import io
 
-# Define a function to generate a tone for a note with variable duration based on comma usage
-def note_to_tone(note, base_duration=500):
+# Define a function to generate a tone for a note with complex duration specifications
+def note_to_tone(note_spec, base_duration=500):
     # Note frequencies in Hz (simplified)
     notes = {
         'do': 261.63,  # C4
@@ -15,15 +15,26 @@ def note_to_tone(note, base_duration=500):
         'la': 440.00,  # A4
         'si': 493.88   # B4
     }
-    note_base = note.split(',')[0].lower()
-    extra_commas = note.count(',')  # Count the number of commas
-    duration = base_duration + 500 * extra_commas  # Increase duration by 500ms for each comma
+    
+    # Split note and duration or comma additions
+    parts = note_spec.split(':')
+    note_part = parts[0]
+    extra_commas = note_part.count(',')
+    note_base = note_part.split(',')[0].lower()
+
+    # Set duration based on colon or comma usage
+    if len(parts) > 1:
+        duration = int(parts[1])  # User specified duration overrides comma additions
+    else:
+        duration = base_duration + 500 * extra_commas  # Increment duration for each comma
+
+    # Get frequency and generate tone
     frequency = notes.get(note_base, 261.63)  # Default to C4 if note is not found
     tone = Sine(frequency)
     audio = tone.to_audio_segment(duration=duration)
     return audio
 
-# Function to combine notes into a sequence with extended durations based on commas
+# Function to combine notes into a sequence with specified durations
 def generate_melody(notes_input):
     melody = AudioSegment.silent(duration=0)  # Start with a moment of silence
     for part in notes_input.split():
@@ -33,7 +44,7 @@ def generate_melody(notes_input):
 
 # Streamlit interface
 st.title('Musical Note Player')
-user_input = st.text_input('Enter a sequence of notes (e.g., "do re mi fa sol la si. Use a comma to double the length (e.g., do mi mi, mi)"):')
+user_input = st.text_input('Enter a sequence of notes (e.g., "do:1000, mi,, mi:750"):')
 if st.button('Generate Tone'):
     melody = generate_melody(user_input)
     # Convert the audio to a format that can be played in the browser
@@ -43,4 +54,4 @@ if st.button('Generate Tone'):
     st.audio(audio_file, format='audio/wav', start_time=0)
 
 # Display instructions
-st.write('Enter notes separated by spaces. Use commas immediately after a note to increase its duration by 500 ms per comma. Example: "do,, mi, mi" results in "do" played for 1500 ms and "mi" played for 1000 ms.')
+st.write('Enter notes separated by spaces. Use commas immediately after a note to increase its duration by 500 ms per comma, or specify an exact duration with a colon (e.g., "do:1000"). Example: "do:1000, mi,, mi:750" results in "do" played for 1000 ms, "mi" played for 1000 ms, and another "mi" played for 750 ms.')
