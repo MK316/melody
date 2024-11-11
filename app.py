@@ -14,6 +14,7 @@ def note_to_tone(note_spec, base_duration=500):
         'sol': 392.00,  # G4
         'la': 440.00,  # A4
         'si': 493.88   # B4
+        'do1': 523.25  # C5
     }
     
     # Split note and duration or comma additions
@@ -55,14 +56,4 @@ if st.button('Generate Tone'):
     st.audio(audio_file, format='audio/wav', start_time=0)
 
 # Display notes and instructions
-notes_markdown = """
-```python
-notes = {
-    'do': 261.63,  # C4
-    're': 293.66,  # D4
-    'mi': 329.63,  # E4
-    'fa': 349.23,  # F4
-    'sol': 392.00,  # G4
-    'la': 440.00,  # A4
-    'si': 493.88   # B4
-}
+st.markdown("'do': 261.63 (C4) | 're': 293.66 (D4) |'mi': 329.63 (E4) | 'fa': 349.23 (F4) | 'sol': 392.00 (G4) | 'la': 440.00 (A4) | 'si': 493.88 (B4) | 'do1': 523.25 (C5) |")
