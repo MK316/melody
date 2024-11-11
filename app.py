@@ -29,7 +29,7 @@ def generate_melody(notes_input):
     return melody
 
 def play_sample_melody():
-    sample_notes = "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, mi,"
+    sample_notes = "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re#,"
     return generate_melody(sample_notes)
 
 # Streamlit interface
