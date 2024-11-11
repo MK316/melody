@@ -33,13 +33,13 @@ def generate_melody(notes_input):
     return melody
 
 def play_sample_melody():
-    sample_notes = "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re#, mi, sol-1 mi re do si-1 do la, la, la, sol fa mi re sol-1 mi re, re, do,")
+    sample_notes = "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re#, mi, sol-1 mi re do si-1 do la, la, la, sol fa mi re sol-1 mi re, re, do,"
     return generate_melody(sample_notes)
 
 # Streamlit interface
 st.title('Create Your Melody')
 st.caption("Sample melody: Salut d'amour, Op.12 (Elgar, Edward)")
-st.caption("Input: "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re#, mi, sol-1 mi re do si-1 do la, la, la, sol fa mi re sol-1 mi re, re, do,")
+st.caption("Input: mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re#, mi, sol-1 mi re do si-1 do la, la, la, sol fa mi re sol-1 mi re, re, do,")
 sample_melody = play_sample_melody()
 buffer = io.BytesIO()
 sample_melody.export(buffer, format="wav")
