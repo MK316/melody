@@ -43,7 +43,7 @@ def generate_melody(notes_input):
     return melody
 
 # Streamlit interface
-st.title('Musical Note Player')
+st.title('Create Your Melody')
 user_input = st.text_input('Enter a sequence of notes (e.g., "do:1000, mi,, mi:750"):')
 if st.button('Generate Tone'):
     melody = generate_melody(user_input)
