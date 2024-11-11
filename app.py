@@ -44,7 +44,17 @@ def generate_melody(notes_input):
 
 # Streamlit interface
 st.title('Create Your Melody')
-user_input = st.text_input('Enter a sequence of notes (e.g., "do:1000, mi,, mi:750"):')
+user_input = st.text_input('Enter a sequence of notes (e.g., "do:1000, mi,, mi:750"):', '')
+
+if st.button('Generate Tone'):
+    melody = generate_melody(user_input)
+    # Convert the audio to a format that can be played in the browser
+    audio_file = io.BytesIO()
+    melody.export(audio_file, format='wav')
+    audio_file.seek(0)
+    st.audio(audio_file, format='audio/wav', start_time=0)
+
+# Display notes and instructions
 notes_markdown = """
 ```python
 notes = {
@@ -56,14 +66,3 @@ notes = {
     'la': 440.00,  # A4
     'si': 493.88   # B4
 }
-
-if st.button('Generate Tone'):
-    melody = generate_melody(user_input)
-    # Convert the audio to a format that can be played in the browser
-    audio_file = io.BytesIO()
-    melody.export(audio_file, format='wav')
-    audio_file.seek(0)
-    st.audio(audio_file, format='audio/wav', start_time=0)
-
-# Display instructions
-st.write('Enter notes separated by spaces. Use commas immediately after a note to increase its duration by 500 ms per comma, or specify an exact duration with a colon (e.g., "do:1000"). Example: "do:1000, mi,, mi:750" results in "do" played for 1000 ms, "mi" played for 1000 ms, and another "mi" played for 750 ms.')
