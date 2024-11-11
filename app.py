@@ -29,11 +29,12 @@ def generate_melody(notes_input):
     return melody
 
 def play_sample_melody():
-    sample_notes = "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re,"
+    sample_notes = "mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, mi,"
     return generate_melody(sample_notes)
 
 # Streamlit interface
 st.title('Create Your Melody')
+st.caption("Sample melody: Salut d'amour, Op.12 (Elgar, Edward)"
 sample_melody = play_sample_melody()
 buffer = io.BytesIO()
 sample_melody.export(buffer, format="wav")
@@ -47,3 +48,31 @@ if st.button('Generate Tone'):
     user_melody.export(user_buffer, format="wav")
     user_buffer.seek(0)
     st.audio(user_buffer, format='audio/wav')
+
+# Display notes and instructions
+table_markdown = """
+| Symbol to use | Frequency (Hz) | Octave |
+|------|----------------|--------|
+| do-1 | 130.81         | C3     |
+| re-1 | 146.83         | D3     |
+| mi-1 | 164.81         | E3     |
+| fa-1 | 174.61         | F3     |
+| sol-1| 196.00         | G3     |
+| la-1 | 220.00         | A3     |
+| si-1 | 246.94         | B3     |
+| do   | 261.63         | C4     |
+| re   | 293.66         | D4     |
+| mi   | 329.63         | E4     |
+| fa   | 349.23         | F4     |
+| sol  | 392.00         | G4     |
+| la   | 440.00         | A4     |
+| si   | 493.88         | B4     |
+| do1  | 523.25         | C5     |
+| re1  | 587.33         | D5     |
+| mi1  | 659.25         | E5     |
+| fa1  | 698.46         | F5     |
+| sol1 | 783.99         | G5     |
+| la1  | 880.00         | A5     |
+| si1  | 987.77         | B5     |
+"""
+st.markdown(table_markdown)
