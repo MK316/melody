@@ -13,7 +13,7 @@ def note_to_tone(note_spec, base_duration=500):
         'fa': 349.23,  # F4
         'sol': 392.00,  # G4
         'la': 440.00,  # A4
-        'si': 493.88   # B4
+        'si': 493.88,   # B4
         'do1': 523.25  # C5
     }
     
