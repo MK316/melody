@@ -39,7 +39,7 @@ def play_sample_melody():
 # Streamlit interface
 st.title('🎶 Create Your Melody')
 st.caption("Sample melody: Salut d'amour, Op.12 (Elgar, Edward)")
-st.markdown("[Performance audio in mp3](https://s9.imslp.org/files/imglnks/usimg/1/1d/IMSLP164477-PMLP03415-01_Salut_d'Amour.mp3)")
+st.markdown("Performance audio in [mp3](https://s9.imslp.org/files/imglnks/usimg/1/1d/IMSLP164477-PMLP03415-01_Salut_d'Amour.mp3)")
 st.caption("Input: mi, sol-1 mi re do si-1 do fa, fa, fa, fa, mi, sol-1 mi re do si-1 do re, re, re, re#, mi, sol-1 mi re do si-1 do la, la, la, sol fa mi re sol-1 mi re, re, do,")
 sample_melody = play_sample_melody()
 buffer = io.BytesIO()
