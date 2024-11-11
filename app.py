@@ -34,7 +34,7 @@ def play_sample_melody():
 
 # Streamlit interface
 st.title('Create Your Melody')
-st.caption("Sample melody: Salut d'amour, Op.12 (Elgar, Edward)"
+st.caption("Sample melody: Salut d'amour, Op.12 (Elgar, Edward)")
 sample_melody = play_sample_melody()
 buffer = io.BytesIO()
 sample_melody.export(buffer, format="wav")
