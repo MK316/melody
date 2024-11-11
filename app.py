@@ -33,7 +33,7 @@ def generate_melody(notes_input):
 
 # Streamlit interface
 st.title('Musical Note Player')
-user_input = st.text_input('Enter a sequence of notes (e.g., "do,, mi, mi"):')
+user_input = st.text_input('Enter a sequence of notes (e.g., "do re mi fa sol la si. Use a comma to double the length (e.g., do mi mi, mi)"):')
 if st.button('Generate Tone'):
     melody = generate_melody(user_input)
     # Convert the audio to a format that can be played in the browser
